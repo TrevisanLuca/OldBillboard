@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Message>
+@{
+    ViewData["Title"] = "Messages";
+}
+<div class="text-center">   
+
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <h5>You type it, we post it!</h5>
+    <ul class="list-group list-group-flush">
+        @foreach (var message in Model)
+        {
+            <li class="list-group-item">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.ActionLink(message.Title, "Detail", "Messages", new { id = message.Id })</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@message.Author</h6>
+                        <p class="card-text">@message.Body</p>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
